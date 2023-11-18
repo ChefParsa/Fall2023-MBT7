@@ -1,0 +1,128 @@
+#include <sys/time.h> //-- What is This Used for ?
+
+#include <sys/time.h> is a C/C++ header file that provides declarations and definitions related to time and timing information on Unix-like operating systems. This header is part of the POSIX (Portable Operating System Interface) standard and is commonly found on systems that adhere to POSIX conventions, including Unix and Linux systems.
+
+Here are some common functionalities provided by the sys/time.h header:
+
+Time Structures:
+
+The header often includes the definition of structures such as struct timeval and struct timespec to represent time values.
+Time Functions:
+
+Functions like gettimeofday() are commonly included in this header. gettimeofday() retrieves the current time and timezone information.
+
+	#include <sys/time.h>
+
+	int gettimeofday(struct timeval *tv, struct timezone *tz);
+
+This function returns the current time in the tv structure and the timezone information in the tz structure.
+
+Time Manipulation Functions:
+
+Functions for manipulating time, such as timerclear(), timerisset(), timercmp(), and timeradd(), might also be included.
+
+	#include <sys/time.h>
+
+	void timerclear(struct timeval *tvp);
+	int timerisset(const struct timeval *tvp);
+	int timercmp(const struct timeval *a, const struct timeval *b, const char *cmp);
+	void timeradd(struct timeval *a, const struct timeval *b, struct timeval *result);
+	
+These functions are used for manipulating time values.
+
+Constants:
+
+Constants related to time, such as CLOCKS_PER_SEC, might be defined.
+
+	#include <time.h>
+
+	#define CLOCKS_PER_SEC 1000000
+
+
+CLOCKS_PER_SEC represents the number of clock ticks per second.
+
+These functionalities are part of the broader time and timing-related facilities provided by the POSIX standard. They are useful for tasks that involve measuring time intervals, calculating time differences, and working with timestamps. Keep in mind that some functions, such as gettimeofday(), may not be available on all systems, as POSIX allows for variations in system implementations.
+
+
+--------------------------------------------------------------------------------------
+include <iostream> //-- What is This Used for ?
+
+
+The #include <iostream> directive in C++ is used to include the input/output stream functionality from the C++ Standard Library. This header provides facilities for reading from and writing to the standard input/output devices, such as the console.
+
+Here are some key components provided by <iostream>:
+
+cin (standard input stream):
+
+It is an object of the istream class that represents the standard input stream. You can use cin to read data from the console or other input sources.
+cout (standard output stream):
+
+It is an object of the ostream class that represents the standard output stream. You can use cout to write data to the console or other output destinations.
+cerr (standard error stream):
+
+It is an object of the ostream class that represents the standard error stream. Similar to cout, but it is typically used for error messages.
+endl:
+
+It is a manipulator that represents a newline character ('\n'). When used with cout, it not only inserts a newline but also flushes the output buffer.
+Input and Output Operators (<< and >>):
+
+These operators are overloaded for various types and are used for formatted input and output. For example, cout << "Hello, World!" writes the string "Hello, World!" to the console.
+Here's a simple example of using <iostream>:
+
+	#include <iostream>
+
+	int main() {
+    	// Output to the console
+    	std::cout << "Hello, World!" << std::endl;
+
+    	// Input from the console
+    	int number;
+    	std::cout << "Enter a number: ";
+    	std::cin >> number;
+    	std::cout << "You entered: " << number << std::endl;
+
+    	return 0;
+	}
+
+In this example, cout is used to output the "Hello, World!" message, and cin is used to read an integer from the console. The std:: prefix is used to indicate that these objects and manipulators are part of the std namespace, which is the namespace for the C++ Standard Library. The #include <iostream> directive is necessary to access these stream objects and related functionality in your C++ program.
+
+--------------------------------------------------------------------------------------
+//-- Where is /dev/ ? and What is Used for and What Can We See Inside It ?
+
+/dev/ is a directory in Unix-like operating systems that is used to represent and interact with devices in the system. In Unix and Linux, everything is treated as a file, and devices are no exception. The /dev/ directory contains special files that represent various devices, including hard drives, partitions, input devices, and more.
+
+Inside the /dev/ directory, you will find entries for a wide range of devices. Here are some common types of devices represented in /dev/:
+
+Block Devices:
+
+Hard drives, solid-state drives, USB drives, and other block storage devices are represented as block devices. For example, /dev/sda may represent the first hard drive, and /dev/sda1 may represent the first partition on that drive.
+Character Devices:
+
+Devices that transfer data character by character, such as serial ports, are represented as character devices. For example, /dev/ttyS0 may represent the first serial port.
+Input Devices:
+
+Devices like keyboards and mice are represented in /dev/input/. For example, /dev/input/mice could represent multiple mice devices.
+Random and Urandom:
+
+/dev/random and /dev/urandom provide access to the kernel's random number generator. They generate random numbers that can be used for cryptographic purposes.
+Null and Zero Devices:
+
+/dev/null is a special file that discards all data written to it and provides an endless stream of null bytes when read. /dev/zero provides an endless stream of zero bytes when read.
+Console Devices:
+
+/dev/console is often used to represent the system console.
+Loop Devices:
+
+Loop devices (/dev/loopX) are used to mount file systems that reside inside regular files.
+RAM Disks:
+
+/dev/ramX represents RAM disks. RAM disks are temporary file systems that use a portion of the system's RAM.
+Sound Devices:
+
+Sound devices, such as audio cards, are represented in /dev/snd/.
+The contents of /dev/ can vary between different Unix-like systems. It's a crucial part of the system for interacting with hardware, and many of the files inside it are created dynamically as devices are detected or configured during the system boot process. Users and applications interact with these device files to read from or write to the corresponding hardware devices.
+
+
+
+
+
